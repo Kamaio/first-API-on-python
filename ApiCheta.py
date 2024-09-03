@@ -8,4 +8,4 @@ if(limite < 203):
 
     UI.mostrarDatos.printf(datosPD)
 
-else: print()
+else: print("Numero de registros ingresados fuera de rango, ingrese un numero menor o igul a 203")
