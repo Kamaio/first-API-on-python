@@ -1,11 +1,15 @@
 import API.consumeAPI
 import UI.mostrarDatos
 
-departamento_usuario = input("Bienvenido al programa de consulta de casos de covid\nIngrese el departamento del que desea consultar los registros: ")
-limite = int(input("Ingrese la cantidad de registros que desea consultar: "))
-if(limite < 203):
-    datosPD = API.consumeAPI.consume("departamento_nom='"+departamento_usuario+"'", limite)
+datosUI = UI.mostrarDatos.bienvenida()
+comprobar = 0
 
-    UI.mostrarDatos.printf(datosPD)
+while comprobar == 0:
+    if(datosUI[1] < 204):
+        datosPD = API.consumeAPI.consume("departamento_nom='"+datosUI[0]+"'", datosUI[1])
+        UI.mostrarDatos.printf(datosPD)
+        comprobar = 1
 
-else: print("Numero de registros ingresados fuera de rango, ingrese un numero menor o igul a 203")
+    else: 
+        print("Numero de registros ingresados fuera de rango, ingrese un numero menor o igul a 203")
+        datosUI = UI.mostrarDatos.bienvenida()
