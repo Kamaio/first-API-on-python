@@ -15,3 +15,40 @@ def consume(Departamento_usuario, limite):
 
     #pone los datos bien bonitos para no ver nada igual y los devuelve a main para enviarselo a la UI
     return pd.DataFrame.from_records(datos)
+
+
+
+lista = [
+  "AMAZONAS",
+  "ANTIOQUIA",
+  "ARAUCA",
+  "ATLANTICO",
+  "BOLIVAR",
+  "BOYACA",
+  "CALDAS",
+  "CAQUETA",
+  "CASANARE",
+  "CAUCA",
+  "CESAR",
+  "CHOCO",
+  "CORDOBA",
+  "CUNDINAMARCA",
+  "GUAINIA",
+  "GUAVIARE",
+  "HUILA",
+  "LA GUAJIRA",
+  "MAGDALENA",
+  "META",
+  "NARIÑO",
+  "NORTE DE SANTANDER",
+  "PUTUMAYO",
+  "QUINDIO",
+  "RISARALDA",
+  "SAN ANDRAS Y PROVIDENCIA",
+  "SANTANDER",
+  "SUCRE",
+  "TOLIMA",
+  "VALLE DEL CAUCA",
+  "VAUPES",
+  "VICHADA"
+]
