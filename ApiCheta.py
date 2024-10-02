@@ -9,8 +9,10 @@ while comprobar == 0:
     if datosUI[0].upper() in API.consumeAPI.lista:
         if(datosUI[1] < 204):
             datosPD = API.consumeAPI.consume("departamento_nom='"+datosUI[0]+"'", datosUI[1])
-            UI.mostrarDatos.printf(datosPD)
-            UI.mostrarDatos.graficas(datosPD)
+            datosPD = UI.mostrarDatos.printf(datosPD)
+            UI.mostrarDatos.graficaFallecidos(datosPD)
+            UI.mostrarDatos.graficaCasos(datosPD)
+            UI.mostrarDatos.graficaCircular(datosPD)
             comprobar = 1
 
         else: 

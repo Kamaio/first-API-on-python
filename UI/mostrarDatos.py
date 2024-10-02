@@ -25,13 +25,37 @@ def printf(datosPD):
     print(datosFlitr.describe())
     datosFlitr = datosFlitr.dropna(subset=["edad", "departamento_nom", "ciudad_municipio_nom", "fuente_tipo_contagio", "estado"])
     print("Datos limpios: \n", tabla(datosFlitr, headers=('EDAD', 'DEPARTAMENTO', 'CIUDAD', 'TIPO', 'ESTADO'), tablefmt='github', showindex=True))
+    return datosPD
 
 
-def graficas(datosPD):
+
+def graficaFallecidos(datosPD):
+    fallecidos = datosPD[datosPD['estado'] == 'Fallecido']
+    moda_edad = fallecidos['edad'].mode().values[0] if not fallecidos['edad'].empty else None
+
+    fallecidos['edad'].hist(color='blue')
+    plt.title('Fallecimientos x edad')
+    plt.xlabel('Edad')
+    plt.ylabel('Nro.Fallecidos')
+    plt.grid(True)
+    if moda_edad is not None:
+        plt.axvline(moda_edad, color='blue', linestyle='dashed', linewidth=1, label=f'Moda: {moda_edad}')
+        plt.legend()
+    plt.show()
+
+
+def graficaCasos(datosPD):
     datosPD['edad'].value_counts().plot(kind='bar')
-    plt.xlabel('edad')
-    plt.ylabel('Numero de casos')
-    plt.title('Edad x Nro.Casos')
+    plt.xlabel('Edad')
+    plt.ylabel('Casos')
+    plt.title("Casos x Edad")
+    plt.show()
+
+def graficaCircular(datosPD):
+    plt.figure(figsize=(10, 6))
+    plt.pie(datosPD['ciudad_municipio_nom'].value_counts(), labels=datosPD['ciudad_municipio_nom'].value_counts().index, autopct='%1.1f%%', startangle=140, colors=plt.cm.Paired(range(len(datosPD['ciudad_municipio_nom'].value_counts()))))
+    plt.title('Distribución de Casos por Municipio')
+    plt.axis('equal')
     plt.show()
 
 
