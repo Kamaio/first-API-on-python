@@ -10,6 +10,7 @@ while comprobar == 0:
         if(datosUI[1] < 204):
             datosPD = API.consumeAPI.consume("departamento_nom='"+datosUI[0]+"'", datosUI[1])
             UI.mostrarDatos.printf(datosPD)
+            UI.mostrarDatos.graficas(datosPD)
             comprobar = 1
 
         else: 

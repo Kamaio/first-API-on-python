@@ -1,6 +1,7 @@
 import pandas as pd
 from tabulate import tabulate as tabla
 import numpy as np
+import matplotlib.pyplot as plt
 
 def printf(datosPD):
 
@@ -25,6 +26,13 @@ def printf(datosPD):
     datosFlitr = datosFlitr.dropna(subset=["edad", "departamento_nom", "ciudad_municipio_nom", "fuente_tipo_contagio", "estado"])
     print("Datos limpios: \n", tabla(datosFlitr, headers=('EDAD', 'DEPARTAMENTO', 'CIUDAD', 'TIPO', 'ESTADO'), tablefmt='github', showindex=True))
 
+
+def graficas(datosPD):
+    datosPD['edad'].value_counts().plot(kind='bar')
+    plt.xlabel('edad')
+    plt.ylabel('Numero de casos')
+    plt.title('Edad x Nro.Casos')
+    plt.show()
 
 
 def bienvenida():
